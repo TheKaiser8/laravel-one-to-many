@@ -36,6 +36,18 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
+        <div class="mb-3">
+            <label for="type" class="form-label">Tipologia</label>
+            <select name="type_id" id="type" class="form-select @error('type_id') is-invalid @enderror" aria-label="Default select example">
+                <option value="">Nessuna categoria</option>
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}" {{ old('type_id') == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                @endforeach
+            </select>
+            @error('type_id')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
         <button type="submit" class="btn btn-primary">Crea</button>
         <button type="reset" class="btn btn-secondary">Pulisci i campi</button>
         <a href="{{ route('admin.projects.index') }}" class="btn btn-light">Annulla</a>
