@@ -15,6 +15,13 @@
         <div class="card-body">
             <h4 class="card-title fw-bold">{{ $project->title}}</h4>
             <h5 class="card-subtitle mb-2 text-muted">{{ $project->slug }}</h5>
+            <div class="mb-3">
+                @if( $project->type)
+                    Categoria: <strong>{{ $project->type->name }}</strong>
+                @else
+                    Nessuna Categoria
+                @endif
+            </div>
             <p class="card-text">{{ $project->description }}</p>
             <div>Cliente:
                 <strong>{{ $project->customer }}</strong>
