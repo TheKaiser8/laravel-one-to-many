@@ -17,9 +17,12 @@
             <h5 class="card-subtitle mb-2 text-muted">{{ $project->slug }}</h5>
             <div class="mb-3">
                 @if( $project->type)
-                    Categoria: <strong>{{ $project->type->name }}</strong>
+                    Tipologia: 
+                    <a href="{{ route('admin.types.show', $project->type) }}" class="text-decoration-none">
+                        <strong>{{ $project->type->name }}</strong>
+                    </a>
                 @else
-                    Nessuna Categoria
+                    Nessuna Tipologia
                 @endif
             </div>
             <p class="card-text">{{ $project->description }}</p>
