@@ -69,7 +69,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
@@ -81,7 +81,14 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        //
+        $data = $request->validated();
+
+        $old_name = $type->name;
+
+        $type->slug = Str::slug($data['name'], '-');
+        $type->update($data);
+
+        return redirect()->route('admin.types.index')->with('message', "La tipologia $old_name è stata aggiornata!");
     }
 
     /**
@@ -92,6 +99,10 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $old_name = $type->name;
+
+        $type->delete();
+
+        return redirect()->route('admin.types.index')->with('message', "La tipologia $old_name è stata cancellata!");
     }
 }
