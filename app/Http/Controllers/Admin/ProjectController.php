@@ -98,10 +98,11 @@ class ProjectController extends Controller
         $project->slug = Str::slug($data['title'], '-');
 
         // controllo che verifica se è presente l'immagine e la cancella di default se già inserita
+        if ($project->picture) {
+            Storage::disk('public')->delete($project->picture);
+        }
+
         if (isset($data['picture'])) {
-            if ($project->picture) {
-                Storage::disk('public')->delete($project->picture);
-            }
             $data['picture'] = Storage::disk('public')->put('uploads', $data['picture']);
         }
 

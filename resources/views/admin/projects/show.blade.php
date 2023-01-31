@@ -9,7 +9,7 @@
     <div class="card">
         <div class="text-center">
             @if ($project->picture)
-                <img src="{{ asset("storage/$project->picture") }}" class="card-img-top w-50" alt="{{{ $project->title }}}">
+                <img src="{{ asset("storage/$project->picture") }}" class="card-img-top w-50" alt="{{ $project->title }}">
             @endif
         </div>
         <div class="card-body">
