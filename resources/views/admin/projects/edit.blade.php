@@ -38,7 +38,7 @@
         <div class="mb-3">
             <label for="type" class="form-label">Tipologia</label>
             <select name="type_id" id="type" class="form-select @error('type_id') is-invalid @enderror" aria-label="Default select example">
-                <option value="">Nessuna categoria</option>
+                <option value="">Nessuna tipologia</option>
                 @foreach ($types as $type)
                     <option value="{{ $type->id }}" {{ old('type_id', $project->type_id) == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
                 @endforeach

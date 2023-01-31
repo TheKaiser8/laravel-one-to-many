@@ -31,7 +31,7 @@ class ProjectSeeder extends Seeder
             $new_project->customer = $faker->company();
 
             // popolo la foreign key con una tipologia di progetto ottenuta randomicamente ($type = Type::inRandomOrder()->first();)
-            $new_project->type_id = $type->id;
+            $new_project->type_id = (rand(1, 3) === 1) ? null : $type->id;
             $new_project->save();
         }
     }

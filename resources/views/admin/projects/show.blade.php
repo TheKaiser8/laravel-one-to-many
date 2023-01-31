@@ -22,7 +22,7 @@
                         <strong>{{ $project->type->name }}</strong>
                     </a>
                 @else
-                    Nessuna Tipologia
+                    Nessuna tipologia
                 @endif
             </div>
             <p class="card-text">{{ $project->description }}</p>
